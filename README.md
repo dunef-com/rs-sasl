@@ -10,6 +10,15 @@ Implements the following mechanisms:
 * [PLAIN](https://www.rfc-editor.org/rfc/rfc4616)
 * [OAUTHBEARER](https://www.rfc-editor.org/rfc/rfc7628)
 
+## Usage
+
+Add this to your `Cargo.toml`:
+
+```toml
+[dependencies]
+rs-sasl = "0.1"
+```
+
 ## LICENSE
 
 This project is licensed under the MIT license. See [LICENSE](LICENSE) for details.
