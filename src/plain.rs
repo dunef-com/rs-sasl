@@ -3,7 +3,7 @@ use crate::sasl;
 use anyhow::{anyhow, bail, Result};
 
 /// The PLAIN mechanism name.
-const PLAIN: &str = "PLAIN";
+pub const PLAIN: &str = "PLAIN";
 
 /// A client implementation of the PLAIN authentication mechanism, as described
 /// in RFC 4616. Authorization identity may be left blank to indicate that it is

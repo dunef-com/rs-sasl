@@ -4,7 +4,7 @@ use anyhow::{anyhow, bail, Result};
 use serde::{Deserialize, Serialize};
 
 /// The OAUTHBEARER mechanism name.
-const OAUTHBEARER: &str = "OAUTHBEARER";
+pub const OAUTHBEARER: &str = "OAUTHBEARER";
 
 #[derive(Deserialize, Serialize)]
 pub struct OAuthBearerError {

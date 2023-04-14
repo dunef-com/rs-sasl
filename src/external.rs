@@ -3,7 +3,7 @@ use crate::sasl;
 use anyhow::{anyhow, Result};
 
 /// The EXTERNAL mechanism name.
-const EXTERNAL: &str = "EXTERNAL";
+pub const EXTERNAL: &str = "EXTERNAL";
 
 /// An implementation of the EXTERNAL authentication mechanism, as described in
 /// RFC 4422. Authorization identity may be left blank to indicate that the

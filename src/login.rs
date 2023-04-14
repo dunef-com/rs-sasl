@@ -3,7 +3,7 @@ use crate::sasl;
 use anyhow::{anyhow, Result};
 
 /// The LOGIN mechanism name.
-const LOGIN: &str = "LOGIN";
+pub const LOGIN: &str = "LOGIN";
 
 /// A client implementation of the LOGIN authentication mechanism for SMTP,
 /// as described in http://www.iana.org/go/draft-murchison-sasl-login

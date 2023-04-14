@@ -3,7 +3,7 @@ use crate::sasl;
 use anyhow::{anyhow, bail, Result};
 
 /// The ANONYMOUS mechanism name.
-const ANONYMOUS: &str = "ANONYMOUS";
+pub const ANONYMOUS: &str = "ANONYMOUS";
 
 /// A client implementation of the ANONYMOUS authentication mechanism, as
 /// described in RFC 4505.
