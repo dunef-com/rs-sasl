@@ -1,7 +1,11 @@
 [package]
 name = "lib-rust-sasl"
 version = "0.1.0"
+description = "A SASL library written in Rust."
+
 edition = "2021"
+license = "MIT"
+authors = ["Nick Westendorf"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
