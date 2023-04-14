@@ -1,5 +1,5 @@
 [package]
-name = "lib-rust-sasl"
+name = "rs-sasl"
 version = "0.1.0"
 description = "A SASL library written in Rust."
 
