@@ -10,3 +10,6 @@ Implements the following mechanisms:
 * [PLAIN](https://www.rfc-editor.org/rfc/rfc4616)
 * [OAUTHBEARER](https://www.rfc-editor.org/rfc/rfc7628)
 
+## LICENSE
+
+This project is licensed under the MIT license. See [LICENSE](LICENSE) for details.
