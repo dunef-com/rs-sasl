@@ -16,7 +16,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-rs-sasl = "0.1"
+rs-sasl = "0.2"
 ```
 
 ## LICENSE
