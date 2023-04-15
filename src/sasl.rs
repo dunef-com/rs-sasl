@@ -23,7 +23,7 @@ pub trait Client {
 }
 
 /// Server interface to perform challenge-response authentication.
-pub trait Server {
+pub trait Server: Send {
     /// Begins or continues challenge-response authentication. If the client
     /// supplies an initial response, response is non-nil.
     /// 

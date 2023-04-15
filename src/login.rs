@@ -42,7 +42,7 @@ impl sasl::Client for LoginClient {
 }
 
 /// Authenticates users with an username and a password.
-pub type LoginAuthenticator = Box<dyn Fn(&str, &str) -> Result<()>>;
+pub type LoginAuthenticator = Box<dyn Fn(&str, &str) -> Result<()> + Send>;
 
 enum LoginState {
     LoginNotStarted,
@@ -63,13 +63,12 @@ pub struct LoginServer {
 }
 
 impl LoginServer {
-    pub fn new<F>(authenticator: F) -> Self
-    where F: Fn(&str, &str) -> Result<()> + 'static {
+    pub fn new<F>(authenticator: LoginAuthenticator) -> Self {
         Self {
             state: LoginState::LoginNotStarted,
             username: String::new(),
             password: String::new(),
-            authenticator: Box::new(authenticator),
+            authenticator,
         }
     }
 }

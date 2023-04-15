@@ -1,6 +1,6 @@
 [package]
 name = "rs-sasl"
-version = "0.3.0"
+version = "0.4.0"
 description = "A SASL library written in Rust."
 
 edition = "2021"

@@ -33,7 +33,7 @@ impl sasl::Client for AnonymousClient {
 }
 
 /// Get trace information from clients logging in anonymously.
-pub type AnonymousAuthenticator = Box<dyn Fn(&str) -> Result<()>>;
+pub type AnonymousAuthenticator = Box<dyn Fn(&str) -> Result<()> + Send>;
 
 /// A server implementation of the ANONYMOUS authentication mechanism, as
 /// described in RFC 4505.
@@ -43,11 +43,10 @@ pub struct AnonymousServer {
 }
 
 impl AnonymousServer {
-    pub fn new<F>(authenticator: F) -> Self
-    where F: Fn(&str) -> Result<()> + 'static {
+    pub fn new(authenticator: AnonymousAuthenticator) -> Self {
         Self {
             done: false,
-            authenticator: Box::new(authenticator),
+            authenticator,
         }
     }
 }

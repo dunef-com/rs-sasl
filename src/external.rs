@@ -38,7 +38,7 @@ impl sasl::Client for ExternalClient {
 /// the identity is left blank, it indicates that it is the same as the one used
 /// in the external credentials. If identity is not empty and the server doesn't
 /// support it, an error must be returned.
-pub type ExternalAuthenticator = Box<dyn Fn(&str) -> Result<()>>;
+pub type ExternalAuthenticator = Box<dyn Fn(&str) -> Result<()> + Send>;
 
 /// NewExternalServer creates a server implementation of the EXTERNAL
 /// authentication mechanism, as described in RFC 4422.
@@ -48,11 +48,10 @@ pub struct ExternalServer {
 }
 
 impl ExternalServer {
-    pub fn new<F>(authenticator: F) -> Self
-    where F: Fn(&str) -> Result<()> + 'static {
+    pub fn new<F>(authenticator: ExternalAuthenticator) -> Self {
         Self {
             done: false,
-            authenticator: Box::new(authenticator),
+            authenticator,
         }
     }
 }

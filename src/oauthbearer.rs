@@ -67,7 +67,7 @@ impl sasl::Client for OAuthBearerClinet {
     }
 }
 
-pub type OAuthBearerAuthenticator = Box<dyn Fn(OAuthBearerOptions) -> Result<(), OAuthBearerError>>;
+pub type OAuthBearerAuthenticator = Box<dyn Fn(OAuthBearerOptions) -> Result<(), OAuthBearerError> + Send>;
 
 pub struct OAuthBearerServer {
     done: bool,
@@ -76,12 +76,11 @@ pub struct OAuthBearerServer {
 }
 
 impl OAuthBearerServer {
-    pub fn new<F>(authenticator: F) -> Self
-    where F: Fn(OAuthBearerOptions) -> Result<(), OAuthBearerError> + 'static {
+    pub fn new(authenticator: OAuthBearerAuthenticator) -> Self {
         Self {
             done: false,
             fail_error: None,
-            authenticator: Box::new(authenticator),
+            authenticator,
         }
     }
 
